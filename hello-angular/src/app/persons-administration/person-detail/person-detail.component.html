@@ -1,0 +1,23 @@
+<!--
+<p>Mostrando el contenido de una persona</p>
+<p> {{ person.showName()}}</p>
+
+<div *ngIf="person.isAdult()">
+  <p>Esta persona es mayor de edad</p>
+</div>
+<div *ngIf="!person.isAdult()">
+  <p>Esta persona es menor de edad</p>
+</div>
+-->
+
+<div *ngIf="person != null">
+    <h5>Editando el contenido de una persona</h5>
+    <label>Nombre:</label>
+    <input type="text" [(ngModel)]="person.firstName">
+    <br>
+    <label>Apellido:</label>
+    <input type="text" [(ngModel)]="person.lastName">
+    <br>
+    <label>Edad</label>
+    <input type="number" [(ngModel)]="person.age">
+</div>

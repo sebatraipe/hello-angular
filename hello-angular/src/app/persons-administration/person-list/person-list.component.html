@@ -1,0 +1,11 @@
+<p>Mostrando el listado de personas</p>
+<ul style= list-style:none; >
+  <li *ngFor="let person of persons" [class.selected]= "personSelected === person">
+    {{person.showName()}}
+    <br>
+    Edad: {{person.age}}
+    <button (click)="selectPerson(person)">Modificar</button>
+  </li>
+</ul>
+
+

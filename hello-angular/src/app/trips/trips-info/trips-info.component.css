@@ -1,0 +1,20 @@
+.input-form {
+    display: flex;
+}
+
+mat-card {
+    width: 50%;
+}
+
+.mat-card-trips {
+    width: 30%;    
+    background-color: #f5f5f5;
+}
+
+.select-form {
+    display: flex;
+}
+
+mat-form-field {
+    margin-right: 12px;
+}

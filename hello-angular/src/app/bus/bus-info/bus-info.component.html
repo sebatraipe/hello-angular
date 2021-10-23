@@ -1,0 +1,68 @@
+<mat-card [formGroup]="formBus" *ngIf="!loading" class="mat-card-bus mat-elevation-z8">
+
+    <!-- PATENTE -->
+    <mat-form-field appearance="legacy" class="input-form">
+      <mat-label> Patente: </mat-label>
+      <input matInput formControlName="licensePlate">
+      <ng-container *ngIf="fc.licensePlate.invalid &&(fc.licensePlate.dirty || fc.licensePlate.touched)">
+        <mat-error *ngIf="fc.licensePlate.errors?.required">
+          Este campo es requerido.
+        </mat-error>
+        <mat-error *ngIf="fc.licensePlate.errors?.minlength">
+            <!--Hay que ver cuantos valores acepta una patente-->
+          Este campo requiere mas de 3 caracteres.
+        </mat-error>
+      </ng-container>
+    </mat-form-field>
+
+    <!-- MARCA -->
+    <mat-form-field appearance="legacy" class="select-form">
+      <mat-label> Marca </mat-label>
+        <mat-select formControlName="brand">
+          <mat-option *ngFor="let brand of brands" [value]= "brand.name" (click)="onSelect(brand.id)"> 
+            {{brand.name}} 
+          </mat-option>
+        </mat-select>
+        <ng-container *ngIf="fc.brand.invalid &&(fc.brand.dirty || fc.brand.touched)">
+          <mat-error *ngIf="fc.brand.errors?.required">
+            Este campo es requerido.
+          </mat-error>
+      </ng-container>
+    </mat-form-field>
+
+    <!-- MODELO -->
+    <mat-form-field appearance="legacy" class="select-form" *ngIf="models.length > 0">
+      <mat-label> Modelo </mat-label>
+      <mat-select formControlName="model">
+        <mat-option *ngFor="let m of models" [value]="m.name"> 
+          {{m.name}} 
+        </mat-option>
+      </mat-select>
+      <ng-container *ngIf="fc.model.invalid &&(fc.model.dirty || fc.model.touched)">
+        <mat-error *ngIf="fc.model.errors?.required">
+          Este campo es requerido.
+        </mat-error>
+      </ng-container>
+    </mat-form-field>
+
+     <!-- CANTIDAD DE ASIENTOS -->
+     <mat-form-field appearance="legacy" class="input-form">
+      <mat-label> Cantidad de asientos: </mat-label>
+      <input matInput formControlName="numberOfSeats">
+      <ng-container *ngIf="fc.numberOfSeats.invalid &&(fc.numberOfSeats.dirty || fc.numberOfSeats.touched)">
+        <mat-error *ngIf="fc.numberOfSeats.errors?.required">
+          Este campo es requerido.
+        </mat-error>
+        <mat-error *ngIf="fc.numberOfSeats.errors?.min || fc.numberOfSeats.errors?.max">
+          Este campo requiere valores entre 1 y 90.
+        </mat-error>
+      </ng-container>
+    </mat-form-field>
+
+    <div>
+      <button mat-button (click)="goToBack()">Volver</button>
+      <button mat-button color="primary" (click)="save()"
+              [disabled]="formBus.invalid || loading">Guardar</button>
+    </div>
+  </mat-card>
+  <mat-spinner *ngIf="loading" style="margin: 0px auto"></mat-spinner>

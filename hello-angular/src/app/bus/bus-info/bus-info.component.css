@@ -1,0 +1,12 @@
+.input-form {
+    display: flex;
+}
+
+.select-form {
+    display: flex;
+}
+
+.mat-card-bus {
+    width: 30%;    
+    background-color: #f5f5f5;
+}
